@@ -17,7 +17,7 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 
-last  <- function(db = NULL, type = "blastn") {
+blast  <- function(db = NULL, type = "blastn") {
   if(is.null(db)) stop("No BLAST database specified!")
   db <- file.path(dirname(db), basename(db)) #relative spaces should be more than enough, there is no need to get absolute paths
   if(length(Sys.glob(paste(db, "*", sep="")))<1) stop("BLAST database does not exist! (tried to open: ", db,")")
