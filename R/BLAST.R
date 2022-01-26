@@ -16,13 +16,15 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-blast  <- function(db = NULL, type = "blastn") {
+b
+
+last  <- function(db = NULL, type = "blastn") {
   if(is.null(db)) stop("No BLAST database specified!")
-  db <- file.path(normalizePath(dirname(db)), basename(db))
+  db <- file.path(dirname(db), basename(db)) #relative spaces should be more than enough, there is no need to get absolute paths
   if(length(Sys.glob(paste(db, "*", sep="")))<1) stop("BLAST database does not exist! (tried to open: ", db,")")
 
-  ### check for spaces
-  if(length(grep(" ", db)) > 0) stop("Database name or path contains spaced. rename or move database to remove spaces (current path: ", db,")")
+  ### dont check for spaces
+  #if(length(grep(" ", db)) > 0) stop("Database name or path contains spaced. rename or move database to remove spaces (current path: ", db,")")
 
   ### check if executable is available
   .findExecutable(type)
